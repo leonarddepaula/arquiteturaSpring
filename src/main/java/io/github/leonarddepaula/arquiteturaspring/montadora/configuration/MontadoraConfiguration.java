@@ -4,12 +4,14 @@ import io.github.leonarddepaula.arquiteturaspring.montadora.Motor;
 import io.github.leonarddepaula.arquiteturaspring.montadora.TipoMotor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 
 @Configuration
 public class MontadoraConfiguration {
 
     @Bean
-    public Motor motor() {
+    @Primary
+    public Motor motorAspirado() {
         var motor = new Motor();
         motor.setCavalos(120);
         motor.setCilindros(4);
@@ -18,4 +20,28 @@ public class MontadoraConfiguration {
         motor.setTipo(TipoMotor.ASPIRADO);
         return motor;
     }
+
+
+    @Bean
+    public Motor motorEletrico() {
+        var motor = new Motor();
+        motor.setCavalos(140);
+        motor.setCilindros(3);
+        motor.setModelo("TH-10");
+        motor.setLitragem(1.2);
+        motor.setTipo(TipoMotor.ELETRICO);
+        return motor;
+    }
+
+    @Bean
+    public Motor motorTurbo() {
+        var motor = new Motor();
+        motor.setCavalos(220);
+        motor.setCilindros(4);
+        motor.setModelo("XPTO-01");
+        motor.setLitragem(1.6);
+        motor.setTipo(TipoMotor.TURBO);
+        return motor;
+    }
+
 }
